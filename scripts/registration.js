@@ -1,6 +1,32 @@
-function Displaypets() {
+let petSalon = [];
 
-  //let estructuraDeUnArray = [{},{},{}];
+
+class Pet {
+  constructor(Name, Age, Gender, Services, Breed) {
+
+    this.Name = Name;
+    this.Age = Age;
+    this.Gender = Gender;
+    this.Services = Services;
+    this.Breed = Breed;
+
+
+  }
+}
+   
+for (let i = 0; i < petSalon.length; i++) {
+  let pet = petSalon[i];
+    let row = `
+     <tr>
+        <td>${pet.Name}</td>
+        <td>${pet.Age}</td>
+        <td>${pet.Gender}</td>
+        <td>${pet.Services}</td>
+        <td>${pet.Breed}</td>
+      </tr>`;
+      petDisplayArea.innerHTML += row;
+      petDisplayArea.appendChild(row);
+    }
 
   let petsList = [
     {
@@ -16,7 +42,7 @@ function Displaypets() {
       Gender: "female",
       Services: "hair cut",
       Breed: "german shepheld",
-    }, 
+    },
     {
       Name: "Choco",
       Age: "3 years old",
@@ -26,37 +52,68 @@ function Displaypets() {
     }
   ];
 
-  let petDisplayArea = document.getElementById("petsName"); // <div id="petsName"></div>
- 
-  for (let i = 0; i <= petsList.length; i++) {
+  
+
+  for (let i = 0; i < petsList.length; i++) {
     
-    petDisplayArea.innerHTML += `<li>Client: ${petsList[i].Name} </li>`;
+    petDisplayArea.innerHTML += `<li>pet: ${petsList.Name}</li>`;
   }
+
+    let pet4 = new Pet("King", "4", "male", "Pow-dicure","Lab");
+    let pet5 = new Pet("moe", "10", "male", "Grooming","lab");
+    let pet6 = new Pet("Teddy", "8", "male", "bath and brush","beagle");
+
+      console.log(pet4.Name);
+      console.log(pet5.Name);
+      console.log(pet6.Name);
+
+ //============
+ // REGITER PET
+ // ==========
+
+const clientform = document.getElementById("petForm");
+
+function regiterpet(event){
+  event.preventDefault();
+
+  
+   const Name = clientform.elements["petName"].value;
+   const Age = clientform.elements["petAge"].value;
+   const Breed = clientform.elements["petBreed"].value;
+   const Gender = clientform.elements["petGender"].value;
+   const Services = clientform.elements["petService"].value;
+
+
+  const newPet = new Pet(
+   document.getElementById('Name').value,
+   document.getElementById('Age').value,
+   document.getElementById('Gender').value,
+   document.getElementById('Services').value,
+   document.getElementById('Breed').value
+  );
+
+  console.log(newPet);
+  //identify the body
+
+  const body = document.getElementById("petDisplayArea")
+
+  //use the info - create the row on the table
+  const row = document.createElement("tr");
+
+  // define the content of the row
+
+  row.innerHTML =`
+  <td>${newPet.Name}</td>
+  <td>${newPet.Age}</td>
+  <td>${newPet.Gender}</td>
+  <td>${newPet.Services}</td>
+  <td>${newPet.Breed}</td>
+  `
+
+
+
+  body.appendChild(row);
+
+  document.getElementById("petForm").reset();
+
 }
-
-Displaypets();
-
-
-
-
-
-
-//console.log("Probando movernoes dentro de un array");
-//console.log(`Cliente: ${petsList[i].Name} `);
-//${petsList[i].Age} ${petsList[i].Breed}
-//${petsList[i].Age} ${petsList[i].Breed}
-
- // console.log(petsList[2].Breed); // beagle
-  // console.log(petsList[0].Name); //Luna
-  // console.log(petsList[1].Age); // 6 years old
-
-  // console.log(petsList[2].Name); // Choco
-  // console.log(petsList[1].Breed); // german shepheld
-  // console.log(petsList[1].Gender); // female
-  // console.log(petsList);
-
-  // For loop empieza aqui
-  // i cambia en cada ciclo. 
-  // Ciclo 1, i=0
-  // Ciclo 2, i=1
-  // Ciclo 3, i=2
