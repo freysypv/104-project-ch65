@@ -73,7 +73,7 @@ for (let i = 0; i < petSalon.length; i++) {
 
 const clientform = document.getElementById("petForm");
 
-function regiterpet(event){
+function registerpet(event){
   event.preventDefault();
 
   
@@ -93,14 +93,11 @@ function regiterpet(event){
   );
 
   console.log(newPet);
-  //identify the body
+ 
 
   const body = document.getElementById("petDisplayArea")
 
-  //use the info - create the row on the table
   const row = document.createElement("tr");
-
-  // define the content of the row
 
   row.innerHTML =`
   <td>${newPet.Name}</td>
@@ -118,7 +115,24 @@ function regiterpet(event){
   document.getElementById("petForm").reset();
 
 }
+// regiterpet()
 
 function deleteRow(buttonElement) {
 buttonElement.closest('tr').remove();
 }
+window.toggleDarkMode = function() {  const darkModeBtn = document.querySelector('#changeModeButton');
+
+
+darkModeBtn.addEventListener('click', () => {
+   
+    document.body.classList.toggle('dark-mode');
+
+   
+    if (document.body.classList.contains('dark-mode')) {
+        darkModeBtn.textContent = 'Light Mode';
+    } else {
+        darkModeBtn.textContent = 'Dark Mode';
+    }
+});};
+
+

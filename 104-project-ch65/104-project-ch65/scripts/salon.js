@@ -20,12 +20,22 @@ function displaysaloninfo(){
         <p>Hours: ${salon.hours.open} - ${salon.hours.close}</p>
         <p>Phone: ${salon.phone}</p>
         <p>Address: ${salon.address.street}, ${salon.address.city}, ${salon.address.state} ${salon.address.zip}</p>
-        <button type="button" class="btn btn-info" href="services.html">Services</button>
-        <button type="button" class="btn btn-success">Register</button>
-        `
-
-    
-     
+        `      
 };
 
  displaysaloninfo()
+
+ 
+
+$("#changeModeButton").click(function() {
+    $("body").toggleClass("dark-mode")
+    if ($("body").hasClass("dark-mode")) {
+     $(this).text("light mode");  
+    } else {
+        $(this).text("dark mode")
+        
+    }
+
+    $("#changeModeButton").text("🌗")
+
+});
