@@ -1,18 +1,32 @@
+let petSalon = [];
 
-function Client (name, Age, Gender, Services, Breed) {
+
+class Pet {
+  constructor(Name, Age, Gender, Services, Breed) {
+
+    this.Name = Name;
+    this.Age = Age;
+    this.Gender = Gender;
+    this.Services = Services;
+    this.Breed = Breed;
+
+
+  }
+}
    
-
-        this.Nameame = Name;
-        this.Age = Age;
-        this.Gender = Gender;
-        this.Services = Services;
-        this.Breed = Breed;
-      }
-
-
-function Displaypets() {
-
-  //let estructuraDeUnArray = [{},{},{}];
+for (let i = 0; i < petSalon.length; i++) {
+  let pet = petSalon[i];
+    let row = `
+     <tr>
+        <td>${pet.Name}</td>
+        <td>${pet.Age}</td>
+        <td>${pet.Gender}</td>
+        <td>${pet.Services}</td>
+        <td>${pet.Breed}</td>
+      </tr>`;
+      petDisplayArea.innerHTML += row;
+      petDisplayArea.appendChild(row);
+    }
 
   let petsList = [
     {
@@ -38,35 +52,87 @@ function Displaypets() {
     }
   ];
 
-  let petDisplayArea = document.getElementById("petsName"); // <div id="petsName"></div>
- 
-  for (let i = 0; i <= petsList.length; i++) {
+  
+
+  for (let i = 0; i < petsList.length; i++) {
     
-    petDisplayArea.innerHTML += `<li>Client: ${petsList[i].Name} </li>`;
+    petDisplayArea.innerHTML += `<li>pet: ${petsList.Name}</li>`;
   }
 
-        let pet4 = new Client("King", "4", "male", "Pow-dicure","Lab");
-        let pet5 = new Client("moe", "10", "male", "Grooming","lab");
-        let pet6 = new Client("Teddy", "8", "male", "bath and brush");
+    let pet4 = new Pet("King", "4", "male", "Pow-dicure","Lab");
+    let pet5 = new Pet("moe", "10", "male", "Grooming","lab");
+    let pet6 = new Pet("Teddy", "8", "male", "bath and brush","beagle");
 
-        console.log(pet4.Name);
-        console.log(pet5.Name);
-        console.log(pet6.Name);
+      console.log(pet4.Name);
+      console.log(pet5.Name);
+      console.log(pet6.Name);
+
+ //============
+ // REGITER PET
+ // ==========
+
+const clientform = document.getElementById("petForm");
+
+function registerpet(event){
+  event.preventDefault();
+
+  
+   const Name = clientform.elements["petName"].value;
+   const Age = clientform.elements["petAge"].value;
+   const Breed = clientform.elements["petBreed"].value;
+   const Gender = clientform.elements["petGender"].value;
+   const Services = clientform.elements["petService"].value;
 
 
-        // petDisplayArea.innerHTML += `<li>Client: ${pet4.name}  </li>`; 
-        //  petDisplayArea.innerHTML += `<li>Client: ${pet5.name}  </li>`;
-        //   petDisplayArea.innerHTML += `<li>Client: ${pet6.name}  </li>`;
+  const newPet = new Pet(
+   document.getElementById('Name').value,
+   document.getElementById('Age').value,
+   document.getElementById('Gender').value,
+   document.getElementById('Services').value,
+   document.getElementById('Breed').value
+  );
 
-}  
+  console.log(newPet);
  
-  
 
-  
+  const body = document.getElementById("petDisplayArea")
 
-  
+  const row = document.createElement("tr");
 
-Displaypets();
+  row.innerHTML =`
+  <td>${newPet.Name}</td>
+  <td>${newPet.Age}</td>
+  <td>${newPet.Gender}</td>
+  <td>${newPet.Services}</td>
+  <td>${newPet.Breed}</td>
+  <td><button onclick="deleteRow(this)" class="btn btn-outline-danger">Delete</button></td>
+  `
 
- 
-     
+
+
+  body.appendChild(row);
+
+  document.getElementById("petForm").reset();
+
+}
+// regiterpet()
+
+function deleteRow(buttonElement) {
+buttonElement.closest('tr').remove();
+}
+window.toggleDarkMode = function() {  const darkModeBtn = document.querySelector('#changeModeButton');
+
+
+darkModeBtn.addEventListener('click', () => {
+   
+    document.body.classList.toggle('dark-mode');
+
+   
+    if (document.body.classList.contains('dark-mode')) {
+        darkModeBtn.textContent = 'Light Mode';
+    } else {
+        darkModeBtn.textContent = 'Dark Mode🌗';
+    }
+});};
+
+

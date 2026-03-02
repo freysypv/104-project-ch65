@@ -1,8 +1,8 @@
 //1 identify the form
 const productform = document.querySelector("form");//search the html element
-
+ const body = document.getElementById("body")
 //define the constructor
-function Product(name, price, category){
+function product(name, price, category){
 this.name = name;
 this.price = price;
 this.category = category;
@@ -20,14 +20,25 @@ const category = productform.elements["productCategory"].value;
  
 //creater the object
 //const newProduct = new Product(radio, 5, eletronic)
-const newProduct = new Product(name, price, category)
+const newProduct = new product(name, price, category)
 console.log(newProduct);
 
+const row = displayrow(newProduct);
+body.appendChild(row);
 
 //use the information - create the row on the table
-}
- function displayrow() {
+    
+ function displayrow(newProduct) {
+const row = document.createElement("tr")
+//difine the content of the row
+ row.innerHTML =`
+ <td>${newProduct.name}</td>
+ <td>${newProduct.price}</td>
+ <td>${newProduct.category}</td>
+ <td><button class="btn btn-danger">Delete</button></td>`;
 
- }
+ return row;
+
+}
 
 

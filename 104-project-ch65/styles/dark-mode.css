@@ -1,0 +1,18 @@
+/* deafult mode - light */
+:root {
+    --background-color:#FDFFFB;
+    --title-color: #545EFF;
+
+}
+body {
+    background: var(--background-color);
+}
+h1 {
+    color: var(--title-color);
+}
+
+.dark-mode {
+    --background-color:#222222;
+    --title-color:#7FBBFC;
+    
+}
